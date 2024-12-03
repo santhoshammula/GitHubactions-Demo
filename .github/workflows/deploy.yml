@@ -24,14 +24,14 @@ jobs:
         with:
           context: .
           push: true
-          tags: deepak870/webapp
+          tags: ammula/Hello-world
 
       - name: Deploy to EC2 instance
-        uses: appleboy/ssh-action@master
+        uses: EC2-User/ssh-action@master
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USERNAME }}
           key: ${{ secrets.EC2_PRIVATE_KEY }}
           script: |
             docker stop webapp || true
-            docker rm webapp || true
+            docker start webapp || true
